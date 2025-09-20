@@ -1,0 +1,23 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Lire le fichier CSV
+df = pd.read_csv("ventes.csv")
+
+# Ajouter une colonne Chiffre d'affaires
+df['Chiffre_affaires'] = df['Quantité'] * df['Prix']
+
+# Afficher le tableau
+print("Tableau avec chiffre d'affaires :")
+print(df)
+
+# Calculer le chiffre d'affaires total
+total = df['Chiffre_affaires'].sum()
+print("\nChiffre d'affaires total =", total)
+
+# Faire un graphique
+plt.bar(df['Produit'], df['Chiffre_affaires'], color='skyblue')
+plt.title("Chiffre d'affaires par produit")
+plt.xlabel("Produit")
+plt.ylabel("Chiffre d'affaires")
+plt.show()
